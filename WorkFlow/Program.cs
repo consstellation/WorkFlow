@@ -1,3 +1,5 @@
+using WorkFlow.Services;
+
 var builder = WebApplication.CreateBuilder(args); //создаём объект для подготовки приложения
 
 // Add services to the container.
@@ -5,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args); //создаём объект 
 builder.Services.AddControllers(); //регистрируем необходимые сервисы
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+//для передачи контроллера
+builder.Services.AddSingleton<TaskService>();
 
 var app = builder.Build(); //созаём веб-приложение на основе настроек
 

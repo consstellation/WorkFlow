@@ -17,11 +17,21 @@ namespace WorkFlow.Controllers
 
 
         [HttpGet("Count")]
+        //получаем список задач и окаем, если всё хорошо
         public IActionResult GetTaskCount()
         {
             int count = _taskService.GetTaskCount();
 
             return Ok(count);
         }
+
+        [HttpPost]
+        public IActionResult CreateTask(TaskItem task)
+        {
+
+            return Ok(task);
+        }
+
+
     }
 }

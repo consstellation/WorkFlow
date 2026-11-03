@@ -1,4 +1,4 @@
-﻿using WorkFlow.Models;
+﻿    using WorkFlow.Models;
 using WorkFlow.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +6,7 @@ namespace WorkFlow.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TaskController: ControllerBase
+    public class TaskController: ControllerBase 
     {
        private readonly TaskService _taskService;
 
@@ -28,8 +28,13 @@ namespace WorkFlow.Controllers
         [HttpPost]
         public IActionResult CreateTask(TaskItem task)
         {
-
+            _taskService.AddTask(task);
+            int count = _taskService.GetTaskCount();
             return Ok(task);
+
+            //int count = _taskService.GetTaskCount();
+            //return Ok(count);
+
         }
 
 

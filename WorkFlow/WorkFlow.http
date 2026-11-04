@@ -3,12 +3,18 @@
 GET {{WorkFlow_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
 
+### Добавление задачи
 POST https://localhost:7249/api/task
 Content-Type: application/json
 {
-  "title": "Удалить доту 2",
-  "description": "(По желанию)",
+  "title": "Тестовая задача",
+  "description": "Проверка работоспособности кода",
   "isCompleted": false
 }
+
+### Удаление задачи
+DELETE https://localhost:7249/api/task/1
+
+
+

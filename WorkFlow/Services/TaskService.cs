@@ -26,7 +26,7 @@ namespace WorkFlow.Services
 
 
         //получаем id задачи
-        public TaskItem GetTaskById(int id)
+        public TaskItem? GetTaskById(int id)
         {
             foreach (TaskItem task in _tasks)
             {
@@ -40,12 +40,15 @@ namespace WorkFlow.Services
 
         //Коллекцию нельзя изменять во время обычного перебора через foreach.
         //удаляем задачу
-        public void RemoveTask(int id)
+        public bool RemoveTask(int id)
         {
-            TaskItem taskRemove = GetTaskById(id);
+        TaskItem? taskRemove = GetTaskById(id);
 
-            if (taskRemove != null)
-                _tasks.Remove(taskRemove);
+            if (taskRemove == null)
+                return false;
+
+            return _tasks.Remove(taskRemove);
+
         }
 
 

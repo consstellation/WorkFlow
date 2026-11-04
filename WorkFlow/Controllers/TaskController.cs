@@ -25,6 +25,8 @@ namespace WorkFlow.Controllers
             return Ok(count);
         }
 
+
+        //создаём задачу
         [HttpPost]
         public IActionResult CreateTask(TaskItem task)
         {
@@ -32,10 +34,35 @@ namespace WorkFlow.Controllers
             int count = _taskService.GetTaskCount();
             return Ok(task);
 
-            //int count = _taskService.GetTaskCount();
-            //return Ok(count);
-
         }
+
+
+        //получаем задачу по её ID
+        [HttpGet("{id}")]
+        public IActionResult GetTask(int id)
+        {
+            TaskItem? task = _taskService.GetTaskById(id);
+
+            if (task != null)
+                return Ok(task);
+
+            return NotFound();
+        }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTask(int id)
+        {
+            bool isCheck = _taskService.RemoveTask(id);
+
+            if (isCheck)
+                return Ok("Задача удалена");
+
+            return NotFound();
+        }
+
+
+
 
 
     }

@@ -9,7 +9,7 @@ builder.Services.AddControllers(); //регистрируем необходим
 builder.Services.AddOpenApi();
 
 //для передачи контроллера
-builder.Services.AddSingleton<TaskService>();
+builder.Services.AddSingleton<ITaskService, TaskService>();
 
 var app = builder.Build(); //созаём веб-приложение на основе настроек
 

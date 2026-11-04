@@ -2,7 +2,7 @@
 
 namespace WorkFlow.Services
 {
-    public class TaskService
+    public class TaskService: ITaskService
     {
 
         //список задач

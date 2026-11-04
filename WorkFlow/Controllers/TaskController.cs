@@ -50,6 +50,8 @@ namespace WorkFlow.Controllers
         }
 
 
+        //удаление задачи
+
         [HttpDelete("{id}")]
         public IActionResult DeleteTask(int id)
         {
@@ -61,6 +63,24 @@ namespace WorkFlow.Controllers
             return NotFound();
         }
 
+        //изменение задачи
+        [HttpPut("{id}")]
+        public IActionResult PutTask(int id, TaskItem taskPut)
+        {
+            TaskItem? task = _taskService.GetTaskById(id);
+
+            if(task != null)
+            {
+                task.Title = taskPut.Title;
+                task.Description = taskPut.Description;
+                task.IsCompleted = taskPut.IsCompleted;
+
+                return Ok(task);
+            }
+            
+            return NotFound();
+
+        }
 
 
 

@@ -16,5 +16,15 @@ Content-Type: application/json
 ### Удаление задачи
 DELETE https://localhost:7249/api/task/1
 
+### Обновление задачи
+PUT https://localhost:7249/api/task
+Content-Type: application/json
+{
+  "title": "Новое название",
+  "description": "Новое описание",
+  "isCompleted": true
+}
+
+
 
 
